@@ -1,0 +1,93 @@
+/*
+ * Extend this file so that the program alternately asks two users to enter
+ * their moves, and having them play standard Tic-Tac-Toe. Have the program
+ * expect users to * input their moves by typing the character which
+ * corresponds to the space which they would like to take on the board. If the
+ * move was valid, update the board with the player's number. If the move was
+ * not valid, ask the same player to make another move. Additionally, have it
+ * prompt if the players would like to go again after the game ends. This
+ * prompt should accept all of "true/false", "y/n", and "yes/no", case
+ * insensitive in all cases, as answers.
+ */
+import java.io.IOException;
+import java.util.Scanner;
+
+public class TicTacToe {
+
+	public static void main(final String[] args) throws IOException {
+		final char[][] test = {{'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'}};
+		printBoard(test);
+		boolean result = isWin();
+		do {
+			getInput();
+			isWin();
+			boolean result2 = isWin();
+			if (result2 == false) {
+				break;
+			}
+		}
+		while (result==true);
+		
+	}
+
+	public static void printBoard(final char[][] board) {
+		for (final char[] row : board) {
+			for (final char i : row) {
+				System.out.print(i);
+			}
+			System.out.println();
+		}
+	}
+	public static void getInput () throws IOException {
+		System.out.println("Please enter a position to place the mark");
+
+		char userInput = (char)System.in.read();
+
+		if (userInput == 'A') {
+			System.out.println("You input A");
+		}	
+		else if (userInput == 'B') {
+			System.out.println("You input B");
+		}
+		else if (userInput == 'C') {
+			System.out.println("You input C");
+		}
+		else if (userInput == 'D') {
+			System.out.println("You input D");
+		}
+		else if (userInput == 'E') {
+			System.out.println("You input E");
+		}
+		else if (userInput == 'F') {
+			System.out.println("You input F");
+		}
+		else if (userInput == 'G') {
+			System.out.println("You input G");
+		}
+		else if (userInput == 'H') {
+			System.out.println("You input H");
+		}
+		else if (userInput == 'I') {
+			System.out.println("You input I");
+		}
+		else {
+			System.out.println("The letter you entered is not valid");
+		}
+
+	}
+	public static boolean isWin(){
+		Scanner newScanner = new Scanner (System.in);
+		int test = newScanner.nextInt();
+		if (test == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	
+				
+	}
+
+
+}
+
+
