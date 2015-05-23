@@ -1,33 +1,34 @@
-/*
- * Extend this file so that the program alternately asks two users to enter
- * their moves, and having them play standard Tic-Tac-Toe. Have the program
- * expect users to * input their moves by typing the character which
- * corresponds to the space which they would like to take on the board. If the
- * move was valid, update the board with the player's number. If the move was
- * not valid, ask the same player to make another move. Additionally, have it
- * prompt if the players would like to go again after the game ends. This
- * prompt should accept all of "true/false", "y/n", and "yes/no", case
- * insensitive in all cases, as answers.
- */
 import java.io.IOException;
 import java.util.Scanner;
+import java.lang.Math;
 
-public class TicTacToe {
+public class Testing4 {
 
 	public static void main(final String[] args) throws IOException {
 		final char[][] test = {{'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'}};
 		printBoard(test);
-		boolean result = isWin();
-		do {
-			getInput();
-			isWin();
-			boolean result2 = isWin();
-			if (result2 == false) {
-				break;
+		System.out.println("Please enter a position to place the mark");
+		boolean userResult = false;
+		boolean compResult = false;
+		int counter = 0;
+		char[][] cpuPick = compPick(test);
+		userResult = isWin(test);
+		compResult = isCompWin(test);
+
+		while (userResult = true) {
+
+			counter = counter+1;
+			getInput(test);
+			printBoard(test);
+			isWin(test);
+			isCompWin(test);
+			compPick(test);
+			//System.out.println(userResult);
+			if (counter == 9) {
+				System.exit(1);
 			}
+
 		}
-		while (result==true);
-		
 	}
 
 	public static void printBoard(final char[][] board) {
@@ -38,56 +39,299 @@ public class TicTacToe {
 			System.out.println();
 		}
 	}
-	public static void getInput () throws IOException {
-		System.out.println("Please enter a position to place the mark");
 
-		char userInput = (char)System.in.read();
+	public static char[][] getInput(char[][] test) throws IOException {
+		//char userInput = (char)System.in.read();
+		Scanner reader = new Scanner(System.in);
+		char userInput = reader.next().charAt(0);
 
-		if (userInput == 'A') {
-			System.out.println("You input A");
-		}	
-		else if (userInput == 'B') {
-			System.out.println("You input B");
+		if (userInput == 'A') {		
+				if (test[0][0] == 'O') {
+					System.out.println("That has already been picked");
+					test[0][0] = 'O';
+				}
+				else
+					test [0][0] = 'X';	
+			}
+		
+		else if (userInput =='B') {
+			if (test [0][1] == 'O') {
+				System.out.println("That has already been picked");
+				test [0][1] = 'O';
+			}
+			else 
+			test[0][1] = 'X';
 		}
-		else if (userInput == 'C') {
-			System.out.println("You input C");
+		else if (userInput =='C') {
+			if (test [0][2] == 'O') {
+				System.out.println("That has already been picked");
+				test [0][2] = 'O';
+			}
+			else 
+			test [0][2] = 'X';
 		}
 		else if (userInput == 'D') {
-			System.out.println("You input D");
+			if (test [1][0] == 'O') {
+				System.out.println("That has already been picked");
+				test [1][0] = 'O';
+			}
+			else 
+			test [1][0] = 'X';
 		}
 		else if (userInput == 'E') {
-			System.out.println("You input E");
+			if (test [1][1] == 'O') {
+				System.out.println("That has already been picked");
+				test [1][1] = 'O';
+			}
+			else 
+			test [1][1] = 'X';
 		}
 		else if (userInput == 'F') {
-			System.out.println("You input F");
+			if (test [1][2] == 'O') {
+				System.out.println("That has already been picked");
+				test [1][2] = 'O';
+			}
+			else 
+			test [1][2] = 'X';
 		}
 		else if (userInput == 'G') {
-			System.out.println("You input G");
+			if (test [2][0] == 'O') {
+				System.out.println("That has already been picked");
+				test [2][0] = 'O';
+			}
+			else 
+			test [2][0] = 'X';
 		}
 		else if (userInput == 'H') {
-			System.out.println("You input H");
+			if (test [2][1] == 'O') {
+				System.out.println("That has already been picked");
+				test [2][1] = 'O';
+			}
+			else 
+			test [2][1] = 'X';
 		}
 		else if (userInput == 'I') {
-			System.out.println("You input I");
+			if (test [2][2] == 'O') {
+				System.out.println("That has already been picked");
+				test [2][2] = 'O';
+			}
+			else 
+			test [2][2] = 'X';
 		}
-		else {
-			System.out.println("The letter you entered is not valid");
-		}
-
+		else 
+			System.out.println ("That is not a valid spot");
+		return test;
 	}
-	public static boolean isWin(){
-		Scanner newScanner = new Scanner (System.in);
-		int test = newScanner.nextInt();
-		if (test == 1) {
+
+	public static boolean isWin(char[][] test) {
+		if  (test [0][0] == 'X' && test[0][1] == 'X' && test [0][2] == 'X') {	// ABC
+			System.out.println("You won!");
+			System.exit(1);
 			return true;
-		} else {
-			return false;
 		}
-	
-				
+		if  (test [0][0] == 'X' && test[1][0] == 'X' && test [2][0] == 'X') {	// ADG
+			System.out.println("You won!");
+			System.exit(1);
+			return true;
+		}
+		if  (test [0][1] == 'X' && test[1][1] == 'X' && test [2][1] == 'X') {	// BEH
+			System.out.println("You won!");
+			System.exit(1);
+			return true;
+		}
+		if  (test [0][2] == 'X' && test[1][2] == 'X' && test [2][2] == 'X') {	// CFI
+			System.out.println("You won!");
+			System.exit(1);
+			return true;
+		}
+		if  (test [1][0] == 'X' && test[1][1] == 'X' && test [1][2] == 'X') {	// DEF
+			System.out.println("You won!");
+			System.exit(1);
+			return true;
+		}
+		if  (test [2][0] == 'X' && test[2][1] == 'X' && test [2][2] == 'X') {	// GHI
+			System.out.println("You won!");
+			System.exit(1);
+			return true;
+		}
+		if  (test [0][0] == 'X' && test[1][1] == 'X' && test [2][2] == 'X') {	// AEI
+			System.out.println("You won!");
+			System.exit(1);
+			return true;
+		}
+		if  (test [0][2] == 'X' && test[1][1] == 'X' && test [2][0] == 'X') {	// CEG
+			System.out.println("You won!");
+			System.exit(1);
+			return true;
+		}
+
+		return false;
 	}
 
+	public static boolean isCompWin(char[][] test) {
+		if  (test [0][0] == 'O' && test[0][1] == 'O' && test [0][2] == 'O') {	// ABC
+			System.out.println("Computer won!");
+			return true;
+		}
+		if  (test [0][0] == 'O' && test[1][0] == 'O' && test [2][0] == 'O') {	// ADG
+			System.out.println("Computer won!");
+			return true;
+		}
+		if  (test [0][1] == 'O' && test[1][1] == 'O' && test [2][1] == 'O') {	// BEH
+			System.out.println("Computer won!");
+			return true;
+		}
+		if  (test [0][2] == 'O' && test[1][2] == 'O' && test [2][2] == 'O') {	// CFI
+			System.out.println("Computer won!");
+			return true;
+		}
+		if  (test [1][0] == 'O' && test[1][1] == 'O' && test [1][2] == 'O') {	// DEF
+			System.out.println("Computer won!");
+			return true;
+		}
+		if  (test [2][0] == 'O' && test[2][1] == 'O' && test [2][2] == 'O') {	// GHI
+			System.out.println("Computer won!");
+			return true;
+		}
+		if  (test [0][0] == 'O' && test[1][1] == 'O' && test [2][2] == 'O') {	// AEI
+			System.out.println("Computer won!");
+			return true;
+		}
+		if  (test [0][2] == 'O' && test[1][1] == '0' && test [2][0] == 'O') {	// CEG
+			System.out.println("Computer won!");
+			return true;
+		}
 
+		return false;
+	}
+
+	public static char[][] compPick(char[][] test) {
+		int min = 1;
+		int max = 9;
+		int randNum = (int)(Math.random() * max) + min;
+		//System.out.println(randNum);
+		
+		if (randNum == 1) {				// A
+			if (test[0][0] == 'X') {
+				test[0][0] = 'X';
+			}
+			else if (test[0][0] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else
+				System.out.println("Computer picks A");
+				test [0][0] = 'O';	
+			return test;
+
+		}
+		else if (randNum == 2) {		// B
+			
+			if (test[0][1] == 'X') {
+				test[0][1] = 'X';
+			}
+			else if (test[0][1] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks B");
+				test [0][1] = 'O';
+			return test;
+		}
+		else if (randNum == 3) {		// C
+			
+			if (test[0][2] == 'X') {
+				test[0][2] = 'X';
+			}
+			else if (test[0][2] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks C");
+				test [0][2] = 'O';
+			return test;
+		}
+		else if (randNum == 4) {		// D
+			
+			if (test[1][0] == 'X') {
+				test[1][0] = 'X';
+			}
+			else if (test[1][0] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks D");
+				test [1][0] = 'O';
+			return test;
+		}
+		else if (randNum == 5) {		// E
+			
+			if (test[1][1] == 'X') {
+				test[1][1] = 'X';
+			}
+			else if (test[1][1] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks E");
+				test [1][1] = 'O';
+			return test;
+		}
+		else if (randNum == 6) {		// F
+			
+			if (test[1][2] == 'X') {
+				test[1][2] = 'X';
+			}
+			else if (test[1][2] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks F");
+				test [1][2] = 'O';
+			return test;
+		}
+		else if (randNum == 7) {		// G
+			
+			if (test[2][0] == 'X') {
+				test[2][0] = 'X';
+			}
+			else if (test[2][2] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks G");
+				test [2][0] = 'O';
+			return test;
+		}
+		else if (randNum == 8) {		// H
+			
+			if (test[2][1] == 'X') {
+				test[2][1] = 'X';
+			}
+			else if (test[2][1] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks H");
+				test [2][1] = 'O';
+			return test;
+		}
+		else if (randNum == 9) {		// I
+			
+			if (test[2][2] == 'X') {
+				test[2][2] = 'X';
+			}
+			else if (test[2][2] == 'O') {
+				System.out.println("Computer is dumb");
+			}
+			else 
+				System.out.println("Computer picks I");
+				test [2][2] = 'O';
+			return test;
+		}
+		return test;
+	}
 }
+
+
 
 
