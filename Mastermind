@@ -1,0 +1,87 @@
+package Mastermind;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class mastermindCode {
+	public static void main (String [] args) {
+
+		int userSeq[] = userGuess();
+		int compSeq[] = generateCode();
+		boolean result = isWin(compSeq, compSeq);
+		
+		generateCode();
+		
+			//gameRules();
+			
+			userGuess();
+			isWin(userSeq,compSeq);
+			
+			if (result == true) {
+				System.out.println("You have won!");
+				System.exit(1);
+			}
+		}
+		
+
+	public static void gameRules(){
+		System.out.println("Hello and welcome to my mastermind program!");
+		System.out.println("Would you like to hear the rules?");
+		System.out.println("Please enter y/n");
+		Scanner rulesScanner = new Scanner(System.in);
+		char userInput = rulesScanner.next().charAt(0);
+
+		if (userInput == 'y') {
+			System.out.println("RULES");
+		}
+		else {
+			System.out.println("We'll go straight to the game then");
+		}
+	}
+
+	public static int[] generateCode() {
+		System.out.print("The code is "); 
+		int[] codeArray = new int[4];							
+		for(int i=0;i<4;i++){
+			//int min = 1;
+			//int max = 6;
+			//codeArray[i] = (int)(Math.random() * max) + min;
+			codeArray[i] = 1;
+		} 
+		System.out.println( Arrays.toString( codeArray ) );
+		return codeArray;
+		
+	}
+
+	public static int[] userGuess() {
+		
+		int[] userArray = new int[4];
+		for (int j=0;j<4;j++) {
+			System.out.println("Please enter your guess...");
+			Scanner getUserGuess = new Scanner (System.in);
+			int userGuess = getUserGuess.nextInt();
+			userArray[j] = userGuess;
+			System.out.println(userGuess);
+			 
+		}
+		System.out.println( Arrays.toString( userArray ) );
+		return userArray;
+	}
+
+	public static boolean isWin(int[] userArray, int[] codeArray) {
+		if (userArray [0] == codeArray[0] && userArray[1] == codeArray[1] && userArray[2] == codeArray [2] && userArray[3] == codeArray[3]) {
+			//System.out.println("You have won!");
+			return true;
+			
+			
+		}
+			else {
+				return false;
+				
+		}
+			
+		
+		
+		
+	}
+}
