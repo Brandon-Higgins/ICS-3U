@@ -1,0 +1,164 @@
+/**Copyright (c) Brandon Higgins 2016
+All Rights Reserved
+Use of this code is strictly prohibited without use of the above copyright claim 
+ */
+
+package Hillary;
+
+import java.util.Scanner;
+
+public class HillaryClass {
+	public static void main(String [] args) {
+
+		//System.out.println("Press any key to roll the slot machine");
+		/*
+		Scanner rollScanner = new Scanner(System.in);
+		int roller = rollScanner.nextInt();
+		 */
+		System.out.println("The roll is...");
+
+		for(int i = 0; i<10000000; i++) {
+			int roll = rollSlot();
+			int roll2 = rollSlot2();
+			int roll3 = rollSlot3();
+
+			/*System.out.println(roll);
+		System.out.println(roll2);
+		System.out.println(roll3);
+			 */
+
+			checkRollOne(roll);
+			checkRollTwo(roll2);
+			checkRollThree(roll3);
+
+
+			System.out.println("The roll count is... " +i);
+			if (roll == roll2 && roll == roll3){
+				System.exit(1);
+			}
+		}
+	}
+
+	public static int rollSlot(){
+
+		int max = 8;
+		int min = 1;
+
+		int range = (max - min) + 1;     
+		int roll1 = (int)(Math.random() * range) + min;
+
+		return roll1;
+	}
+
+
+
+	public static int rollSlot2(){
+
+		int max = 8;
+		int min = 1;
+
+		int range = (max - min) + 1;     
+		int roll1 = (int)(Math.random() * range) + min;
+
+		return roll1;
+	}
+
+
+	public static int rollSlot3(){
+
+		int max = 8;
+		int min = 1;
+
+		int range = (max - min) + 1;     
+		int roll1 = (int)(Math.random() * range) + min;
+
+		return roll1;
+	}
+
+	public static void checkRollOne (int roll){
+
+		if (roll == 1){
+			System.out.println("Roll 1 was a banana");
+		}
+		if (roll == 2){
+			System.out.println("Roll 1 was a orange");
+		}
+		if (roll == 3){
+			System.out.println("Roll 1 was a grape");
+		}
+		if (roll == 4){
+			System.out.println("Roll 1 was a apple");
+		}
+		if (roll == 5){
+			System.out.println("Roll 1 was a pear");
+		}
+		if (roll == 6){
+			System.out.println("Roll 1 was a tomato");
+		}
+		if (roll == 7){
+			System.out.println("Roll 1 was a kale");
+		}
+		if (roll == 8){
+			System.out.println("Roll 1 was a kiwi");
+		}
+	}
+
+	public static void checkRollTwo (int roll2){
+
+		if (roll2 == 1){
+			System.out.println("Roll 2 was a banana");
+		}
+		if (roll2 == 2){
+			System.out.println("Roll 2 was a orange");
+		}
+		if (roll2 == 3){
+			System.out.println("Roll 2 was a grape");
+		}
+		if (roll2 == 4){
+			System.out.println("Roll 2 was a apple");
+		}
+		if (roll2 == 5){
+			System.out.println("Roll 2 was a pear");
+		}
+		if (roll2 == 6){
+			System.out.println("Roll 2 was a tomato");
+		}
+		if (roll2 == 7){
+			System.out.println("Roll 2 was a kale");
+		}
+		if (roll2 == 8){
+			System.out.println("Roll 2 was a kiwi");
+
+		}
+	}
+
+	public static void checkRollThree (int roll3){
+
+		if (roll3 == 1){
+			System.out.println("Roll 3 was a banana");
+		}
+		if (roll3 == 2){
+			System.out.println("Roll 3 was a orange");
+		}
+		if (roll3 == 3){
+			System.out.println("Roll 3 was a grape");
+		}
+		if (roll3 == 4){
+			System.out.println("Roll 3 was a apple");
+		}
+		if (roll3 == 5){
+			System.out.println("Roll 3 was a pear");
+		}
+		if (roll3 == 6){
+			System.out.println("Roll 3 was a tomato");
+		}
+		if (roll3 == 7){
+			System.out.println("Roll 3 was a kale");
+		}
+		if (roll3 == 8){
+			System.out.println("Roll 3 was a kiwi");
+
+		}
+	}
+}
+
